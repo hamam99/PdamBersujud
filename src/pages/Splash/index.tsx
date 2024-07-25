@@ -1,8 +1,20 @@
-import { View } from 'react-native'
+import { Text, View } from 'react-native'
 import Logo from '../../assets/icons/logo.png'
 import FastImage from 'react-native-fast-image'
+import Fonts from '../../contants/Fonts'
+import { useEffect } from 'react'
+import useNavigation from '../../navigation/useNavigation'
+import { RouteName } from '../../navigation/RouteName'
 
 const Splash = () => {
+  const navigation = useNavigation()
+
+  useEffect(() => {
+    setTimeout(() => {
+      navigation.navigate(RouteName.HOME)
+    }, 500)
+  }, [])
+
   return (
     <View
       style={{
@@ -10,6 +22,7 @@ const Splash = () => {
         justifyContent: 'center',
         alignItems: 'center',
         flex: 1,
+        gap: 8,
       }}
     >
       <FastImage
@@ -20,6 +33,15 @@ const Splash = () => {
         }}
         resizeMode="contain"
       />
+      <Text
+        style={{
+          color: 'white',
+          fontFamily: Fonts.PoppinsBold,
+          fontSize: 16,
+        }}
+      >
+        AM Bersujud
+      </Text>
     </View>
   )
 }
