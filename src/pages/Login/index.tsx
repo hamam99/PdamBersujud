@@ -6,7 +6,11 @@ import Fonts from '../../contants/Fonts'
 import { TextInput } from 'react-native-paper'
 import { useState } from 'react'
 import TextInputCustom from '../../components/global/TextInputCustom'
-import IconAntDesign from 'react-native-vector-icons/AntDesign'
+import {
+  IconBrandGoogle,
+  IconBrandGoogleFilled,
+  IconUserEdit,
+} from 'tabler-icons-react-native'
 
 const Login = () => {
   const [email, setEmail] = useState('')
@@ -14,12 +18,7 @@ const Login = () => {
 
   return (
     <View style={styles.container}>
-      <View
-        style={{
-          justifyContent: 'center',
-          alignItems: 'center',
-        }}
-      >
+      <View style={styles.containerLogo}>
         <FastImage
           source={Logo}
           style={{
@@ -31,12 +30,7 @@ const Login = () => {
         <Text style={styles.title}>AM Bersujud</Text>
       </View>
 
-      <View
-        style={{
-          width: '100%',
-          gap: 18,
-        }}
-      >
+      <View style={styles.containerInput}>
         <TextInputCustom
           value={email}
           onChangeText={setEmail}
@@ -49,79 +43,38 @@ const Login = () => {
           isPassword
         />
       </View>
-      <Text
-        style={{
-          flexDirection: 'row',
-          fontFamily: Fonts.PoppinsRegular,
-          fontSize: 12,
-        }}
-      >
+      <Text style={styles.forgotPassword}>
         <Text>Anda Lupa Password ? </Text>
-        <Text style={{ color: Colors.blue_1 }}>Reset</Text>
+        <Text style={styles.reset}>Reset</Text>
       </Text>
 
-      <View style={{ width: '100%', gap: 18 }}>
+      <View style={styles.containerButton}>
         <TouchableOpacity
-          style={{
-            backgroundColor: Colors.blue_1,
-            borderRadius: 20,
-            width: '100%',
-            height: 44,
-            justifyContent: 'center',
-            alignItems: 'center',
-            flexDirection: 'row',
-          }}
+          style={[
+            styles.button,
+            {
+              backgroundColor: Colors.blue_1,
+            },
+          ]}
         >
-          <IconAntDesign
+          <IconBrandGoogleFilled
             name="google"
             size={20}
             color="white"
-            style={{
-              position: 'absolute',
-              left: 6,
-              bottom: 0,
-              top: 11,
-            }}
+            style={styles.buttonIcon}
           />
-          <Text
-            style={{
-              color: 'white',
-              fontFamily: Fonts.PoppinsRegular,
-            }}
-          >
-            Masuk
-          </Text>
+          <Text style={styles.buttonText}>Masuk</Text>
         </TouchableOpacity>
         <TouchableOpacity
-          style={{
-            backgroundColor: Colors.orange_1,
-            borderRadius: 20,
-            width: '100%',
-            height: 44,
-            justifyContent: 'center',
-            alignItems: 'center',
-            flexDirection: 'row',
-          }}
+          style={[
+            styles.button,
+            {
+              backgroundColor: Colors.orange_1,
+            },
+          ]}
         >
-          <IconAntDesign
-            name="google"
-            size={20}
-            color="white"
-            style={{
-              position: 'absolute',
-              left: 6,
-              bottom: 0,
-              top: 11,
-            }}
-          />
-          <Text
-            style={{
-              color: 'white',
-              fontFamily: Fonts.PoppinsRegular,
-            }}
-          >
-            Masuk
-          </Text>
+          <IconUserEdit size={20} color="white" style={styles.buttonIcon} />
+          <Text style={styles.buttonText}>Daftar</Text>
         </TouchableOpacity>
       </View>
     </View>
@@ -139,9 +92,42 @@ const styles = StyleSheet.create({
     padding: 30,
     gap: 21,
   },
+  containerLogo: {
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  containerInput: {
+    width: '100%',
+    gap: 18,
+  },
   title: {
     fontFamily: Fonts.PoppinsBold,
     fontSize: 16,
     color: Colors.blue_1,
+  },
+  forgotPassword: {
+    flexDirection: 'row',
+    fontFamily: Fonts.PoppinsRegular,
+    fontSize: 12,
+  },
+  reset: { color: Colors.blue_1 },
+  containerButton: { width: '100%', gap: 18 },
+  button: {
+    borderRadius: 20,
+    width: '100%',
+    height: 44,
+    justifyContent: 'center',
+    alignItems: 'center',
+    flexDirection: 'row',
+  },
+  buttonIcon: {
+    position: 'absolute',
+    left: 6,
+    bottom: 0,
+    top: 11,
+  },
+  buttonText: {
+    color: 'white',
+    fontFamily: Fonts.PoppinsRegular,
   },
 })
