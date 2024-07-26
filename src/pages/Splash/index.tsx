@@ -11,7 +11,7 @@ const Splash = () => {
 
   useEffect(() => {
     setTimeout(() => {
-      navigation.navigate(RouteName.HOME)
+      navigation.navigate(RouteName.LOGIN)
     }, 500)
   }, [])
 
