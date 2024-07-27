@@ -11,10 +11,20 @@ import {
   IconBrandGoogleFilled,
   IconUserEdit,
 } from 'tabler-icons-react-native'
+import * as yup from 'yup'
 
 const Login = () => {
   const [email, setEmail] = useState('')
+  const [emailError, setEmailError] = useState('')
   const [password, setPassword] = useState('')
+  const [passwordError, setPasswordError] = useState('')
+
+  let schema = yup.object().shape({
+    email: yup.string().email().required(),
+    password: yup.string().required().min(3),
+  })
+
+  const isValid = schema.isValidSync({ email, password })
 
   return (
     <View style={styles.container}>
@@ -53,9 +63,10 @@ const Login = () => {
           style={[
             styles.button,
             {
-              backgroundColor: Colors.blue_1,
+              backgroundColor: isValid ? Colors.blue_1 : Colors.gray_1,
             },
           ]}
+          disabled={isValid}
         >
           <IconBrandGoogleFilled
             name="google"
