@@ -20,6 +20,8 @@ import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context'
 import { navigationRef } from './src/navigation/NavigationHelper'
 import RootNavigation from './src/navigation/RootNavigation'
 import { PaperProvider } from 'react-native-paper'
+import ToastConfig from './src/utils/ToastConfig'
+import Toast from 'react-native-toast-message'
 
 type SectionProps = PropsWithChildren<{
   title: string
@@ -37,6 +39,7 @@ function App(): React.JSX.Element {
         <PaperProvider>
           <NavigationContainer ref={navigationRef}>
             <RootNavigation />
+            <Toast config={ToastConfig} />
           </NavigationContainer>
         </PaperProvider>
       </SafeAreaView>
