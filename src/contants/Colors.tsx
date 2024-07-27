@@ -7,6 +7,8 @@ const Colors = {
   orange_1: '#E68933',
   orange_2: '#FFBE81',
   black: '#000000',
+  red_1: '#FF2F54',
+  red_2: '#D90027',
 }
 
 export default Colors
