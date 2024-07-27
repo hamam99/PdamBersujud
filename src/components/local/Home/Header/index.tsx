@@ -5,7 +5,7 @@ import FastImage from 'react-native-fast-image'
 import Fonts from '../../../../contants/Fonts'
 import { IconBell } from 'tabler-icons-react-native'
 
-const Account = () => {
+const Header = () => {
   return (
     <View style={styles.container}>
       <View style={styles.subContainer1}>
@@ -23,7 +23,7 @@ const Account = () => {
   )
 }
 
-export default Account
+export default Header
 
 const styles = StyleSheet.create({
   container: {

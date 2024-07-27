@@ -1,6 +1,6 @@
 import React from 'react'
 import { Text, View } from 'react-native'
-import Account from '../../components/local/Home/Account'
+import Header from '../../components/local/Home/Header'
 
 const Home = () => {
   return (
@@ -9,7 +9,7 @@ const Home = () => {
         flex: 1,
       }}
     >
-      <Account />
+      <Header />
       <Text>HOME</Text>
     </View>
   )
