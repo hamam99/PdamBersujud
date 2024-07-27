@@ -4,7 +4,7 @@ import FastImage from 'react-native-fast-image'
 import Logo from '../../assets/icons/logo.png'
 import Fonts from '../../contants/Fonts'
 import { TextInput } from 'react-native-paper'
-import { useState } from 'react'
+import { useMemo, useState } from 'react'
 import TextInputCustom from '../../components/global/TextInputCustom'
 import {
   IconBrandGoogle,
@@ -12,6 +12,8 @@ import {
   IconUserEdit,
 } from 'tabler-icons-react-native'
 import * as yup from 'yup'
+import useNavigation from '../../navigation/useNavigation'
+import { RouteName } from '../../navigation/RouteName'
 
 const Login = () => {
   const [email, setEmail] = useState('')
@@ -23,8 +25,9 @@ const Login = () => {
     email: yup.string().email().required(),
     password: yup.string().required().min(3),
   })
-
   const isValid = schema.isValidSync({ email, password })
+
+  const navigation = useNavigation()
 
   return (
     <View style={styles.container}>
@@ -66,7 +69,10 @@ const Login = () => {
               backgroundColor: isValid ? Colors.blue_1 : Colors.gray_1,
             },
           ]}
-          disabled={isValid}
+          disabled={!isValid}
+          onPress={() => {
+            navigation.navigate(RouteName.DASHBOARD)
+          }}
         >
           <IconBrandGoogleFilled
             name="google"
