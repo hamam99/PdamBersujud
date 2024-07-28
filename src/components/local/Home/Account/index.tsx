@@ -1,12 +1,6 @@
 import { StyleSheet, Text, View } from 'react-native'
 import Colors from '../../../../contants/Colors'
-import {
-  IconMap,
-  IconMap2,
-  IconMapPin,
-  IconPin,
-  IconUserCircle,
-} from 'tabler-icons-react-native'
+import { IconMapPin, IconUserCircle } from 'tabler-icons-react-native'
 import Fonts from '../../../../contants/Fonts'
 import Button from '../../../global/Button'
 
