@@ -1,7 +1,7 @@
 // import {Image} from '@rneui/base';
 import React from 'react'
 import { Text, View } from 'react-native'
-import Colors from '../../contants/Colors'
+import Colors from '../../../contants/Colors'
 
 const IconTabBar = ({
   focused,
