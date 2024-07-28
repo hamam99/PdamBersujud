@@ -16,7 +16,7 @@ const Home = () => {
     <ScrollView style={styles.container} showsVerticalScrollIndicator={false}>
       <View style={styles.subContainer1}>
         <Header />
-        <View style={styles.subContainer2}>
+        <View style={[styles.subContainer2]}>
           <Account />
           <Menu />
           <Button
@@ -53,6 +53,7 @@ const styles = StyleSheet.create({
     borderTopRightRadius: 20,
     zIndex: 99,
     marginTop: -16,
+    backgroundColor: Colors.white,
   },
   subContainer3: {
     paddingLeft: 16,
