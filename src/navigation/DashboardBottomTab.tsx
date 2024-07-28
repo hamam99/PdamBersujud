@@ -58,7 +58,7 @@ const DashboardBottomTab = () => {
           tabBarIcon: ({ focused }) => (
             <TabMenu
               focused={focused}
-              label="Info"
+              label="Perbaikan"
               Icon={
                 <IconNotes
                   size={24}
@@ -127,13 +127,11 @@ const TabMenu = ({
       {focused && (
         <View
           style={{
-            width: '100%',
+            width: '90%',
             height: 4,
             backgroundColor: Colors.blue_1,
             position: 'absolute',
             top: 0,
-            left: 4,
-            right: 4,
           }}
         />
       )}
