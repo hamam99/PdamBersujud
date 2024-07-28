@@ -1,6 +1,6 @@
 import React from 'react'
 import { Text, View } from 'react-native'
-import { Account, Header, Menu } from '../../components/local/Home'
+import { Account, Banners, Header, Menu } from '../../components/local/Home'
 import Colors from '../../contants/Colors'
 import Button from '../../components/global/Button'
 import { IconAddressBook, IconPlus } from 'tabler-icons-react-native'
@@ -34,6 +34,7 @@ const Home = () => {
           LeftIcon={<IconPlus size={20} color={Colors.blue_1} />}
           onPress={() => {}}
         />
+        <Banners />
       </View>
     </View>
   )
