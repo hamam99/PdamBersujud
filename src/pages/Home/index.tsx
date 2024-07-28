@@ -19,6 +19,11 @@ const Home = () => {
           paddingHorizontal: 16,
           paddingVertical: 9,
           gap: 12,
+          borderTopLeftRadius: 20,
+          borderTopRightRadius: 20,
+          zIndex: 99,
+          marginTop: -16,
+          backgroundColor: Colors.white,
         }}
       >
         <Account />
