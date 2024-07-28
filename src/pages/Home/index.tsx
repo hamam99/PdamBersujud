@@ -2,6 +2,8 @@ import React from 'react'
 import { Text, View } from 'react-native'
 import { Account, Header, Menu } from '../../components/local/Home'
 import Colors from '../../contants/Colors'
+import Button from '../../components/global/Button'
+import { IconAddressBook, IconPlus } from 'tabler-icons-react-native'
 
 const Home = () => {
   return (
@@ -21,6 +23,12 @@ const Home = () => {
       >
         <Account />
         <Menu />
+        <Button
+          label="Pasang baru"
+          mode="outline"
+          LeftIcon={<IconPlus size={20} color={Colors.blue_1} />}
+          onPress={() => {}}
+        />
       </View>
     </View>
   )
