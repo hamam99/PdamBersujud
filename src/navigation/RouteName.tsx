@@ -8,4 +8,5 @@ export enum RouteName {
   DASHBOARD = 'Dashboard',
   REPAIR_REPORT = 'RepairReport',
   PPOB = 'Ppob',
+  PPOB_INPUT_VALUE = 'PpobInputValue',
 }

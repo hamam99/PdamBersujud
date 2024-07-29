@@ -16,14 +16,12 @@ import {
   IconHomeBolt,
   IconRouter,
 } from 'tabler-icons-react-native'
+import { IMenuPpob } from './types'
+import useNavigation from '../../navigation/useNavigation'
+import { RouteName } from '../../navigation/RouteName'
 
-type IMenu = {
-  icon: React.JSX.Element
-  label: string
-  type: string
-}
 const Ppob = () => {
-  const menu: IMenu[] = [
+  const menu: IMenuPpob[] = [
     {
       icon: <IconHomeBolt size={24} color={Colors.white} />,
       label: 'Token Listrik',
@@ -46,11 +44,15 @@ const Ppob = () => {
     },
   ]
 
-  const renderItem = ({ item, index }: { item: IMenu; index: number }) => {
+  const { navigate } = useNavigation()
+  const renderItem = ({ item, index }: { item: IMenuPpob; index: number }) => {
     return (
       <TouchableOpacity
         style={{
           gap: 4,
+        }}
+        onPress={() => {
+          navigate(RouteName.PPOB_INPUT_VALUE, item)
         }}
       >
         <View
