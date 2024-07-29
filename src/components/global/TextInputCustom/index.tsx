@@ -27,6 +27,9 @@ type TextInputCustomProps = {
   title?: string
   disabled?: boolean
   numberOfLines?: number
+  mode?: 'default' | 'underline'
+  titleStyle?: StyleProp<TextStyle> | undefined
+  bottomText?: string
 }
 
 const TextInputCustom = ({
@@ -42,37 +45,28 @@ const TextInputCustom = ({
   title,
   disabled = false,
   numberOfLines = 1,
+  titleStyle,
+  mode = 'default',
+  bottomText,
 }: TextInputCustomProps) => {
   const [hideText, setHideText] = useState(false)
 
   const toggleHideText = () => setHideText(!hideText)
+
+  const currentMode = ListMode[mode]
+
   useEffect(() => {
     setHideText(secureTextEntry)
   }, [secureTextEntry])
+
   return (
     <View>
-      {title && (
-        <Text
-          style={{
-            fontFamily: Fonts.PoppinsRegular,
-            fontSize: 14,
-            color: Colors.black,
-          }}
-        >
-          {title}
-        </Text>
-      )}
+      {title && <Text style={[styles.title, titleStyle]}>{title}</Text>}
       <View
         style={[
+          styles.container,
+          currentMode.container,
           {
-            borderWidth: 2,
-            borderColor: Colors.gray_1,
-            width: '100%',
-            borderRadius: 20,
-            flexDirection: 'row',
-            alignItems: 'center',
-            paddingHorizontal: 18,
-            height: 44,
             backgroundColor: disabled ? Colors.gray_3 : Colors.white,
           },
           containerStyle,
@@ -84,9 +78,8 @@ const TextInputCustom = ({
           placeholder={placeholder}
           editable={!disabled}
           style={[
+            styles.input,
             {
-              fontSize: 14,
-              flex: 1,
               textAlignVertical: numberOfLines > 1 ? 'top' : 'center',
             },
             inputStyle,
@@ -103,22 +96,65 @@ const TextInputCustom = ({
           </TouchableOpacity>
         )}
       </View>
-      {error && (
-        <Text
-          style={{
-            color: 'red',
-            fontSize: 12,
-            paddingHorizontal: 18,
-            marginTop: 2,
-          }}
-        >
-          {error}
-        </Text>
-      )}
+      {bottomText && <Text style={styles.bottomText}>{bottomText}</Text>}
+      {error && <Text style={styles.error}>{error}</Text>}
     </View>
   )
 }
 
-const styles = StyleSheet.create({})
+const ListMode = {
+  default: {
+    container: {
+      borderWidth: 2,
+      borderColor: Colors.gray_1,
+      borderRadius: 20,
+      paddingHorizontal: 18,
+    },
+  },
+  underline: {
+    container: {
+      borderBottomWidth: 1,
+      borderColor: Colors.gray_1,
+      borderRadius: 0,
+      paddingHorizontal: 0,
+      gap: 0,
+    },
+  },
+}
+
+const styles = StyleSheet.create({
+  title: {
+    fontFamily: Fonts.PoppinsRegular,
+    fontSize: 14,
+    color: Colors.black,
+  },
+  container: {
+    // borderWidth: 2,
+    // borderColor: Colors.gray_1,
+    // borderRadius: 20,
+    width: '100%',
+    flexDirection: 'row',
+    alignItems: 'center',
+    // paddingHorizontal: 18,
+    height: 44,
+  },
+  input: {
+    fontSize: 14,
+    flex: 1,
+  },
+  error: {
+    color: 'red',
+    fontSize: 12,
+    paddingHorizontal: 18,
+    marginTop: 2,
+  },
+  bottomText: {
+    fontFamily: Fonts.PoppinsRegular,
+    fontSize: 14,
+    color: Colors.gray_2,
+    textAlign: 'right',
+    marginTop: 4,
+  },
+})
 
 export default TextInputCustom
