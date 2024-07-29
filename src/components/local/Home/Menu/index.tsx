@@ -13,11 +13,14 @@ import tagihanIcon from '../../../../assets/icons/tagihan.png'
 import airTangkiIcon from '../../../../assets/icons/air-tangki.png'
 import Colors from '../../../../contants/Colors'
 import Fonts from '../../../../contants/Fonts'
+import { RouteName } from '../../../../navigation/RouteName'
+import useNavigation from '../../../../navigation/useNavigation'
 
 type IMenu = {
   id: string
   label: string
   icon: any
+  destination?: string
 }
 
 const LIST_MENU: IMenu[] = [
@@ -25,6 +28,7 @@ const LIST_MENU: IMenu[] = [
     id: 'ppob',
     label: 'PPOB',
     icon: ppobIcon,
+    destination: RouteName.PPOB,
   },
   {
     id: 'tagihan',
@@ -49,9 +53,15 @@ const LIST_MENU: IMenu[] = [
 ]
 
 const Menu = () => {
+  const navigate = useNavigation().navigate
   const ItemMenu = ({ item }: { item: IMenu }) => {
     return (
-      <TouchableOpacity style={styles.itemContainer}>
+      <TouchableOpacity
+        style={styles.itemContainer}
+        onPress={() => {
+          navigate(item?.destination || RouteName.HOME)
+        }}
+      >
         <View style={styles.itemSubContainer}>
           <Image source={item?.icon} style={styles.itemIcon} />
         </View>

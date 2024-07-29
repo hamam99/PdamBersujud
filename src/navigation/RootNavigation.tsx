@@ -5,6 +5,7 @@ import { RouteName } from './RouteName'
 import Login from '../pages/Login'
 import DashboardBottomTab from './DashboardBottomTab'
 import RepairReport from '../pages/RepairReport'
+import Ppob from '../pages/Ppob'
 
 const Stack = createNativeStackNavigator()
 
@@ -21,6 +22,7 @@ const RootNavigation = () => {
       <Stack.Screen name={RouteName.LOGIN} component={Login} />
       <Stack.Screen name={RouteName.DASHBOARD} component={DashboardBottomTab} />
       <Stack.Screen name={RouteName.REPAIR_REPORT} component={RepairReport} />
+      <Stack.Screen name={RouteName.PPOB} component={Ppob} />
     </Stack.Navigator>
   )
 }

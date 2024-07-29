@@ -6,4 +6,5 @@ export type RootStackParamList = {
   [RouteName.LOGIN]: undefined
   [RouteName.DASHBOARD]: undefined
   [RouteName.REPAIR_REPORT]: undefined
+  [RouteName.PPOB]: undefined
 }

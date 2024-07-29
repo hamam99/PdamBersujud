@@ -7,4 +7,5 @@ export enum RouteName {
   ACCOUNT = 'Account',
   DASHBOARD = 'Dashboard',
   REPAIR_REPORT = 'RepairReport',
+  PPOB = 'Ppob',
 }
