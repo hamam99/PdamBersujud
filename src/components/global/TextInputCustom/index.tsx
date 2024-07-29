@@ -12,6 +12,7 @@ import {
 import Colors from '../../../contants/Colors'
 import { useEffect, useState } from 'react'
 import { IconEye, IconEyeOff } from 'tabler-icons-react-native'
+import Fonts from '../../../contants/Fonts'
 
 type TextInputCustomProps = {
   value?: string
@@ -23,6 +24,9 @@ type TextInputCustomProps = {
   secureTextEntry?: boolean
   isPassword?: boolean
   error?: string
+  title?: string
+  disabled?: boolean
+  numberOfLines?: number
 }
 
 const TextInputCustom = ({
@@ -35,6 +39,9 @@ const TextInputCustom = ({
   secureTextEntry = false,
   isPassword = false,
   error,
+  title,
+  disabled = false,
+  numberOfLines = 1,
 }: TextInputCustomProps) => {
   const [hideText, setHideText] = useState(false)
 
@@ -44,6 +51,17 @@ const TextInputCustom = ({
   }, [secureTextEntry])
   return (
     <View>
+      {title && (
+        <Text
+          style={{
+            fontFamily: Fonts.PoppinsRegular,
+            fontSize: 14,
+            color: Colors.black,
+          }}
+        >
+          {title}
+        </Text>
+      )}
       <View
         style={[
           {
@@ -55,6 +73,7 @@ const TextInputCustom = ({
             alignItems: 'center',
             paddingHorizontal: 18,
             height: 44,
+            backgroundColor: disabled ? Colors.gray_3 : Colors.white,
           },
           containerStyle,
         ]}
@@ -63,16 +82,20 @@ const TextInputCustom = ({
           value={value}
           onChangeText={onChangeText}
           placeholder={placeholder}
+          editable={!disabled}
           style={[
             {
               fontSize: 14,
               flex: 1,
+              textAlignVertical: numberOfLines > 1 ? 'top' : 'center',
             },
             inputStyle,
           ]}
           keyboardType={keyboardType}
           placeholderTextColor={Colors.gray_2}
           secureTextEntry={hideText}
+          multiline={numberOfLines > 1 ? true : false}
+          numberOfLines={numberOfLines}
         />
         {isPassword && (
           <TouchableOpacity onPress={toggleHideText}>
