@@ -7,6 +7,8 @@ const Colors = {
   gray_1: '#E8E8E8',
   gray_2: '#7C7C7C',
   gray_3: '#DCDEE1',
+  gray_4: '#DDDDDD',
+  gray_5: '#989898',
   orange_1: '#E68933',
   orange_2: '#FFBE81',
   black: '#000000',
