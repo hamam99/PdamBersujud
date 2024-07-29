@@ -18,6 +18,7 @@ type ButtonProps = {
   labelStyle?: StyleProp<TextStyle> | undefined
   mode?: IMode
   LeftIcon?: React.JSX.Element
+  disabled?: boolean
 }
 
 const Button = (props: ButtonProps) => {
@@ -28,13 +29,19 @@ const Button = (props: ButtonProps) => {
     labelStyle,
     mode = 'contain',
     LeftIcon,
+    disabled = false,
   } = props
 
   const currentMode = ListMode[mode]
 
   return (
     <TouchableOpacity
-      style={[styles.container, currentMode?.container, containerStyle]}
+      style={[
+        styles.container,
+        currentMode?.container,
+        disabled && styles.disabled,
+        containerStyle,
+      ]}
       onPress={onPress}
     >
       {LeftIcon && LeftIcon}
@@ -84,5 +91,8 @@ const styles = StyleSheet.create({
     color: Colors.white,
     fontSize: 14,
     lineHeight: 21,
+  },
+  disabled: {
+    backgroundColor: Colors.gray_3,
   },
 })
