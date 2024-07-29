@@ -4,32 +4,23 @@ import Splash from '../pages/Splash'
 import { RouteName } from './RouteName'
 import Login from '../pages/Login'
 import DashboardBottomTab from './DashboardBottomTab'
+import RepairReport from '../pages/RepairReport'
 
 const Stack = createNativeStackNavigator()
 
 const RootNavigation = () => {
   return (
-    <Stack.Navigator initialRouteName={RouteName.DASHBOARD}>
-      <Stack.Screen
-        name={RouteName.SPLASH}
-        component={Splash}
-        options={{ headerShown: false }}
-      />
-      <Stack.Screen
-        name={RouteName.HOME}
-        component={Home}
-        options={{ headerShown: false }}
-      />
-      <Stack.Screen
-        name={RouteName.LOGIN}
-        component={Login}
-        options={{ headerShown: false }}
-      />
-      <Stack.Screen
-        name={RouteName.DASHBOARD}
-        component={DashboardBottomTab}
-        options={{ headerShown: false }}
-      />
+    <Stack.Navigator
+      initialRouteName={RouteName.DASHBOARD}
+      screenOptions={{
+        headerShown: false,
+      }}
+    >
+      <Stack.Screen name={RouteName.SPLASH} component={Splash} />
+      <Stack.Screen name={RouteName.HOME} component={Home} />
+      <Stack.Screen name={RouteName.LOGIN} component={Login} />
+      <Stack.Screen name={RouteName.DASHBOARD} component={DashboardBottomTab} />
+      <Stack.Screen name={RouteName.REPAIR_REPORT} component={RepairReport} />
     </Stack.Navigator>
   )
 }

@@ -3,6 +3,7 @@ import {
   FlatList,
   StyleSheet,
   Text,
+  Touchable,
   TouchableOpacity,
   View,
 } from 'react-native'
@@ -11,10 +12,14 @@ import { Button, HeaderBar } from '../../components/global'
 import {
   IconFilter,
   IconMapPin,
+  IconPlus,
+  IconPointerSearch,
   IconUserCircle,
 } from 'tabler-icons-react-native'
 import Fonts from '../../contants/Fonts'
 import FastImage from 'react-native-fast-image'
+import { RouteName } from '../../navigation/RouteName'
+import useNavigation from '../../navigation/useNavigation'
 
 type ITab = 'general' | 'personal'
 
@@ -57,6 +62,8 @@ const MockList = [
   },
 ]
 const RepairInformation = () => {
+  const navigation = useNavigation()
+
   const [selectedTab, setSelectedTab] = useState<ITab>('general')
 
   const Item = ({ item, index }) => {
@@ -207,6 +214,14 @@ const RepairInformation = () => {
           showsVerticalScrollIndicator={false}
         />
       </View>
+      <TouchableOpacity
+        style={styles.addButton}
+        onPress={() => {
+          navigation.navigate(RouteName.REPAIR_REPORT)
+        }}
+      >
+        <IconPlus size={24} color={Colors.white} />
+      </TouchableOpacity>
     </View>
   )
 }
@@ -246,5 +261,19 @@ const styles = StyleSheet.create({
   },
   listContent: {
     gap: 14,
+  },
+  addButton: {
+    width: 52,
+    height: 52,
+    borderRadius: 52,
+    backgroundColor: Colors.blue_1,
+    position: 'absolute',
+    bottom: 16,
+    right: 16,
+    justifyContent: 'center',
+    alignItems: 'center',
+    zIndex: 999,
+    borderWidth: 1,
+    borderColor: Colors.blue_4,
   },
 })
