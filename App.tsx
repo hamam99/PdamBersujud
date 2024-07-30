@@ -22,6 +22,7 @@ import RootNavigation from './src/navigation/RootNavigation'
 import { PaperProvider } from 'react-native-paper'
 import ToastConfig from './src/utils/ToastConfig'
 import Toast from 'react-native-toast-message'
+import { GestureHandlerRootView } from 'react-native-gesture-handler'
 
 type SectionProps = PropsWithChildren<{
   title: string
@@ -29,21 +30,23 @@ type SectionProps = PropsWithChildren<{
 
 function App(): React.JSX.Element {
   return (
-    <SafeAreaProvider>
-      <SafeAreaView
-        style={{
-          flex: 1,
-        }}
-        edges={['top', 'left', 'right']}
-      >
-        <PaperProvider>
-          <NavigationContainer ref={navigationRef}>
-            <RootNavigation />
-            <Toast config={ToastConfig} />
-          </NavigationContainer>
-        </PaperProvider>
-      </SafeAreaView>
-    </SafeAreaProvider>
+    <GestureHandlerRootView style={{ flex: 1 }}>
+      <SafeAreaProvider>
+        <SafeAreaView
+          style={{
+            flex: 1,
+          }}
+          edges={['top', 'left', 'right', 'bottom']}
+        >
+          <PaperProvider>
+            <NavigationContainer ref={navigationRef}>
+              <RootNavigation />
+              <Toast config={ToastConfig} />
+            </NavigationContainer>
+          </PaperProvider>
+        </SafeAreaView>
+      </SafeAreaProvider>
+    </GestureHandlerRootView>
   )
 }
 
