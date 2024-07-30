@@ -3,18 +3,53 @@ import Colors from '../../contants/Colors'
 import { Button, HeaderBar, TextInputCustom } from '../../components/global'
 import { useRoute } from '@react-navigation/native'
 import { IMenuPpob } from '../Ppob/types'
-import { useState } from 'react'
+import { useRef, useState } from 'react'
 import { HistoryTransaction } from '../../components/local/PpobInputValue'
+import PulsaModal, {
+  PulsaModalRef,
+} from '../../components/local/PpobInputValue/PulsaModal'
+import DataPackageModal, {
+  DataPackageModalRef,
+} from '../../components/local/PpobInputValue/DataPackageModal'
 
 const PpobInputValue = () => {
   const { icon, label, type = 'pulsa' } = useRoute()?.params as IMenuPpob
-  console.log(`PpobInputValue`, {
-    icon,
-    label,
-    type,
-  })
-
   const [value, setValue] = useState('')
+
+  const pulsaModalRef = useRef<PulsaModalRef>(null)
+  const dataPackageModalRef = useRef<DataPackageModalRef>(null)
+
+  const ListType = {
+    electricity_token: {
+      title_input: 'Masukan Nomor Tagihan Listrik',
+      button: <Button mode="outline" label="Pilih" />,
+      historyWidget: <HistoryTransaction />,
+    },
+    pulsa: {
+      title_input: 'Masukan No Hp Anda',
+      button: (
+        <Button
+          mode="outline"
+          label="Pilih Nominal Pulsa"
+          onPress={() => pulsaModalRef?.current?.openModal()}
+        />
+      ),
+      historyWidget: <HistoryTransaction />,
+    },
+    data_packages: {
+      title_input: 'Masukan No Hp Anda',
+      button: (
+        <Button
+          mode="outline"
+          label="Pilih Nominal Paket Data"
+          onPress={() => dataPackageModalRef?.current?.openModal()}
+        />
+      ),
+    },
+    bpjs: {
+      title_input: 'Masukan No BPJS Anda',
+    },
+  }
 
   const currentType = ListType[type]
 
@@ -52,31 +87,13 @@ const PpobInputValue = () => {
         </View>
         <Button label="Selanjutnya" />
       </View>
+      <PulsaModal ref={pulsaModalRef} />
+      <DataPackageModal ref={dataPackageModalRef} />
     </View>
   )
 }
 
 export default PpobInputValue
-// 'electricity_token' | 'pulsa' | 'data_packages' | 'bpjs'
-const ListType = {
-  electricity_token: {
-    title_input: 'Masukan Nomor Tagihan Listrik',
-    button: <Button mode="outline" label="Pilih" />,
-    historyWidget: <HistoryTransaction />,
-  },
-  pulsa: {
-    title_input: 'Masukan No Hp Anda',
-    button: <Button mode="outline" label="Pilih Nominal Pulsa" />,
-    historyWidget: <HistoryTransaction />,
-  },
-  data_packages: {
-    title_input: 'Masukan No Hp Anda',
-    button: <Button mode="outline" label="Pilih Nominal Paket Data" />,
-  },
-  bpjs: {
-    title_input: 'Masukan No BPJS Anda',
-  },
-}
 
 const styles = StyleSheet.create({
   container: {
